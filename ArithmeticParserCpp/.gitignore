@@ -1,9 +1,8 @@
 bin/
 obj/
 /packages/
-/x64
 /.idea
-/.vs
+/Debug
+/x64
 riderModule.iml
 /_ReSharper.Caches/
-/Debug
