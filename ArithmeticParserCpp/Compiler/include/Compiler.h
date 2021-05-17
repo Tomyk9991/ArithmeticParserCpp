@@ -6,19 +6,19 @@
 class Compiler
 {
 public:
-	Compiler(const std::string&& sourceCode);
+	Compiler(std::string&& sourceCode);
 	Compiler(const Compiler& other);
 	~Compiler();
 
 public:
 	double evaluate();
-	double evaluate(const std::string& sourceCode);
+	double evaluate(std::string&& sourceCode);
 
 public:
 	Expression* get_syntax_tree();
 
 private:
-	void init_compiler(const std::string&& sourceCode);
+	void init_compiler(std::string&& sourceCode);
 
 private:
 	void next_char();

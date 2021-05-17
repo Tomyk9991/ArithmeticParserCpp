@@ -9,7 +9,7 @@ public:
 	Expression();
 	Expression(const Expression& other);
 	Expression(double val);
-	Expression(const std::string&& func, Expression* lhs, double value);
+	Expression(std::string&& func, Expression* lhs, double value);
 	Expression(Expression* lhs, Operation op, Expression* rhs, double value);
 	~Expression();
 public:

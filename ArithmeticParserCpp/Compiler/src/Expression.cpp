@@ -28,9 +28,9 @@ Expression::Expression(double val)
 	this->value = val;
 }
 
-Expression::Expression(const std::string&& func, Expression* lhs, double value)
+Expression::Expression(std::string&& func, Expression* lhs, double value)
 {
-	this->func = func;
+	this->func = std::move(func);
 	this->lhs = lhs;
 	this->rhs = nullptr;
 	this->value = value;
@@ -83,20 +83,20 @@ Expression* Expression::pow(Expression* other) const
 
 std::string Expression::tree_view(std::string& indent, bool last)
 {
-	std::stringstream ss;
+	std::string ss;
 	if (last)
 	{
-		ss << "└─";
+		ss += "└─";
 		indent += "  ";
 	}
 	else
 	{
-		ss << "├─";
+		ss += "├─";
 		indent += "| ";
 	}
 
 	std::string inner = this->to_inner_string();
-	ss << inner << '\n';
+	ss += (inner + '\n');
 
 	std::vector<Expression*> children;
 
@@ -105,10 +105,10 @@ std::string Expression::tree_view(std::string& indent, bool last)
 
 	for (int i = 0; i < children.size(); i++)
 	{
-		ss << children[i]->tree_view(indent, i == 1);
+		ss += children[i]->tree_view(indent, i == 1);
 	}
 
-	return ss.str();
+	return ss;
 }
 
 std::string Expression::to_inner_string()

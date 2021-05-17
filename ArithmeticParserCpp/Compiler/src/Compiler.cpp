@@ -6,7 +6,7 @@
 #include <complex>
 #include <stdexcept>
 
-Compiler::Compiler(const std::string&& sourceCode)
+Compiler::Compiler(std::string&& sourceCode)
 {
 	init_compiler(std::move(sourceCode));
 }
@@ -35,7 +35,7 @@ double Compiler::evaluate()
 	throw std::invalid_argument("Source code must not be empty");
 }
 
-double Compiler::evaluate(const std::string& sourceCode)
+double Compiler::evaluate(std::string&& sourceCode)
 {
 	init_compiler(std::move(sourceCode));
 	return this->parse()->evaluate();
@@ -46,7 +46,7 @@ Expression* Compiler::get_syntax_tree()
 	return this->syntaxTree;
 }
 
-void Compiler::init_compiler(const std::string&& sourceCode)
+void Compiler::init_compiler(std::string&& sourceCode)
 {
 	this->sourceCode = std::move(sourceCode);
 }
