@@ -49,6 +49,8 @@ Expression* Compiler::get_syntax_tree()
 void Compiler::init_compiler(std::string&& sourceCode)
 {
 	this->sourceCode = std::move(sourceCode);
+	this->pos = -1;
+	this->ch = -1;
 }
 
 void Compiler::next_char()

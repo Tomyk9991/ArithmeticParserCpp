@@ -63,7 +63,7 @@ Expression* Expression::sub(Expression* other) const
 
 Expression* Expression::mul(Expression* other) const
 {
-	return new  Expression(const_cast<Expression*>(this), MUL, other, this->value * other->evaluate());
+	return new Expression(const_cast<Expression*>(this), MUL, other, this->value * other->evaluate());
 }
 
 Expression* Expression::div(Expression* other) const
